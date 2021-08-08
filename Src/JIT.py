@@ -18,11 +18,11 @@ begin=datetime(2021,6,1)
 end=datetime(2021,8,7)
 pools=p_data.query_top_pools(200,'volumeUSD')
 pools['pool']=pools['pool_name'].str.split("-").str[0:2]
-#Keeping just ETH/Stables pools to analyze
+#Keeping only ETH/Stables pools
 pools=pools.loc[pools['pool'].isin([['USDC','WETH'],['WETH','USDT'],['DAI','WETH']])]
 pools_adresses=pools['id'].to_list()
 
-#Storage for results summart
+#Storage for results
 results={}
 #Storage for csvs of every pool
 path_result=os.getcwd()+"\\Side_Analisis\JIT liquidity\\Results"
